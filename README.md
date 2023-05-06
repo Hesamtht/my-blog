@@ -1,5 +1,5 @@
 # my-blog
-Simple blog site with class comment
+Simple blog site with class comment , Register , Login , Logout
 
 To start project:
 
