@@ -1,0 +1,10 @@
+{% extends 'blog/parent/base.html' %}
+
+{% block content %}
+  <h2>ثبت نام</h2>
+  <form action='' method="post" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">ثبت نام</button>
+  </form>
+{% endblock %}

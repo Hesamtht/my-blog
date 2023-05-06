@@ -62,3 +62,8 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.body , self.name)
+
+class Registration(models.Model):
+    username = models.CharField(max_length = 30)
+    email = models.EmailField()
+    password = models.CharField(max_length = 20)

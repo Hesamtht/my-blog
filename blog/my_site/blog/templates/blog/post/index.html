@@ -1,29 +1,45 @@
 <html>
     <head>
         <title>{% block title %} {% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+        <style>
+            /* This style sets the position of the links to the top right corner of the page */
+            .header-links {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: 10px;
+            }
+
+            /* This style sets the margin between the links */
+            .header-links a:not(:last-child) {
+                margin-right: 10px;
+            }
+        </style>
     </head>
-{% load static %}
-{% block head %}<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">{% endblock %}
-{%block content %}
-    <h1>
-        لیست پست ها
-    </h1>
+    <body>
+        <div class="header-links">
+            <h4><a href="register-form">ثبت نام</a></h4>
+            <a></a>
+            <a></a>
+            <h4><a href="login">ورود</a></h4>
+            <a></a>
+            <a></a>
+            <h4><a href="logout">خروج</a></h4>
+        </div>
 
-    <a href= "postlist">
-        <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
-    </a>
-    <h1>
-        فرم اطلاعات شخصی
-    </h1>
-    <a href= "account-form">
-        <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
-    </a>
-    <h1>
-        ثبت نام
-    </h1>
+        {% block content %}
+        <h1>لیست پست ها</h1>
+        <a href="postlist">
+            <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
+        </a>
 
-    <a href= "signup">
-        <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
-    </a>
-{% endblock %}
+        <h1>فرم اطلاعات شخصی</h1>
+        <a href="account-form">
+            <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
+        </a>
+
+        {% endblock %}
+    </body>
 </html>

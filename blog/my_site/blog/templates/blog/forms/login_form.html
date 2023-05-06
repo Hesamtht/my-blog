@@ -2,9 +2,9 @@
 
 {% block content %}
   <h2>ثبت نام</h2>
-  <form method="post">
+  <form action='' method="post" novalidate>
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">ثبت</button>
+    <button type="submit">ورود</button>
   </form>
 {% endblock %}

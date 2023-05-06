@@ -2,8 +2,9 @@ from django.shortcuts import render , get_object_or_404 , redirect
 from .models import *
 from django.http import HttpResponse
 from .forms import *
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login , authenticate , logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 # Create your views here.
 def welcome(request):
     return render(request , 'blog/post/welcome.html')
@@ -68,16 +69,37 @@ def UserAccount(request):
     return render(request , 'blog/forms/account_form.html' , {'form' : form , 'account' : account})
 
 
-def Signup(request):
+def user_register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username = username , password = password)
-            login(request , user)
-            return redirect('blog:index')
+            cd = form.cleaned_data
+            User.objects.create_user(cd['username'] , cd['email'] , cd['password'])
+            messages.success(request , 'ثبت نام موفقیت آمیز بود', 'success') #show this message if registration form is successful
+            return redirect('blog:index')#if form was valid go to blog/index
     else:
-        form = UserCreationForm()
-    return render(request , 'blog/forms/signup.html' , {'form' : form})
+        form = UserRegistrationForm()
+    return render(request , 'blog/forms/register_form.html' , {'form' : form})
+
+
+def user_login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request , username = cd['username'] , password = cd['password']) #check if user/pass is correct
+            if user is not None:
+                login(request , user)
+                messages.success(request , 'ورود موفقیت آمیز بود', 'success') #show this message if login form is successful
+                return redirect('blog:index') #if form was valid go to blog/index
+            else:
+                messages.error(request , 'نام کاربری یا رمز عبور اشتباه است' , 'danger')
+    else:
+        form = UserLoginForm()
+    return render(request , 'blog/forms/login_form.html' , {'form' : form})
+
+
+def user_logout(request):
+    logout(request)
+    messages.success(request , 'خروج موفقیت آمیز' , 'success') #show this message if logout form is successful
+    return redirect('blog:index')
