@@ -28,7 +28,7 @@ class Post(models.Model):
         ordering = ('publish',)
 
     def get_absolute_url(self): #unique url for each post
-        return reverse('blog:post_detail' , args = [self.slug])
+        return reverse('blog:post_detail' , args = [self.slug]) #blog:post_detail ==> blog is my app name
 
     def __str__(self):
         return self.title
