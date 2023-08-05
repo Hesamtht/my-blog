@@ -1,45 +1,33 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>{% block title %} {% endblock %}</title>
-        {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-        <style>
-            /* This style sets the position of the links to the top right corner of the page */
-            .header-links {
-                position: absolute;
-                top: 0;
-                right: 0;
-                margin: 10px;
-            }
-
-            /* This style sets the margin between the links */
-            .header-links a:not(:last-child) {
-                margin-right: 10px;
-            }
-        </style>
-    </head>
-    <body>
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="header">
         <div class="header-links">
-            <h4><a href="register-form">ثبت نام</a></h4>
-            <a></a>
-            <a></a>
-            <h4><a href="login">ورود</a></h4>
-            <a></a>
-            <a></a>
-            <h4><a href="logout">خروج</a></h4>
+            <h3><a href="register-form">ثبت نام</a></h3>
+            <h3><a href="login">ورود</a></h3>
+            <h3><a href="logout">خروج</a></h3>
         </div>
+    </div>
 
-        {% block content %}
-        <h1>لیست پست ها</h1>
-        <a href="postlist">
-            <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
-        </a>
+    <div class="content-container">
+        <div class="content-box">
+            <h1>لیست پست ها</h1>
+            <a href="postlist">
+                <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
+            </a>
+        </div>
+        <div class="content-box">
+            <h1>فرم اطلاعات شخصی</h1>
+            <a href="account-form">
+                <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
+            </a>
+        </div>
+    </div>
 
-        <h1>فرم اطلاعات شخصی</h1>
-        <a href="account-form">
-            <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
-        </a>
-
-        {% endblock %}
-    </body>
+</body>
 </html>

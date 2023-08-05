@@ -103,3 +103,20 @@ def user_logout(request):
     logout(request)
     messages.success(request , 'خروج موفقیت آمیز' , 'success') #show this message if logout form is successful
     return redirect('blog:index')
+
+
+def search(request):
+    if request.method == 'POST':
+        query_name = request.POST.get('search_input')
+        if query_name:
+
+            results = Post.objects.filter(status = 'published', body__contains = query_name)
+            return render(request , 'blog/post/search_field.html', {'results': results , 'query': query_name})
+
+        else:
+            return render(request , 'blog/post/search_field.html', {'results': None , 'query': query_name})
+
+    return render(request , 'blog/post/search_field.html' , {'results': None , 'query' : None})
+
+def user_profile(request):
+    pass

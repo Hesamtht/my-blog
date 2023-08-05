@@ -1,3 +1,26 @@
-.test {
-    color: crimson;
+body {
+    background-color: #8be493;
+    margin: 0;
+    padding: 0;
+}
+
+.post-list {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #edb6b6;
+    background-color: #cfea8a;
+    color: rgb(142, 71, 71);
+}
+
+.post-list a {
+    text-decoration: none;
+    color: rgb(52, 52, 195);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.post-list h2 {
+    font-size: 18px;
+    margin: 0;
+    padding: 5px 0;
 }

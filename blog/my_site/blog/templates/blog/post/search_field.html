@@ -1,0 +1,30 @@
+{% extends 'blog/parent/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'search_field.css' %}">
+{% endblock %}
+
+{% block title %} Search Results {% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <h1>{{ query }} : جستجو برای</h1>
+
+    {% if results %}
+      <ul>
+        {% for post in results %}
+          <li class="result">
+            <a href="{{ post.get_absolute_url }}">
+              <h2>{{ post.author }} : {{post.title}}</h2>
+            </a>
+            <h3>{{ post.body|truncatewords:20}} : متن پست</h3>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="no-results">چیزی پیدا نشد</p>
+    {% endif %}
+</div>
+{% endblock %}
