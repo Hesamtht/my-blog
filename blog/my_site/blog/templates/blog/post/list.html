@@ -13,9 +13,16 @@
     <h1 class="test">لیست پست ها</h1>
     <div class="post-list">
         {% for post in posts %}
+        <div class="post-item">
             <a href="{{ post.get_absolute_url }}">
                 <h2>{{ post.author }}: {{ post.title }}</h2>
             </a>
-        {% endfor %}
+            <a href="{% url 'blog:delete_post' post.slug %}">حذف</a>
+        </div>
+    {% endfor %}
+
     </div>
+    <a href="{% url 'blog:create_post' %}">
+        <h2>ساخت پست جدید</h2>
+    </a>
 {% endblock %}

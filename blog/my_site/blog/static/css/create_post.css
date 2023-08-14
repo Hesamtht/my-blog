@@ -1,0 +1,42 @@
+.text-right {
+    margin-right: 20px;
+    padding: 20px;
+    border: 1px solid #98c967;
+    border-radius: 10px;
+    background-color: #7ed3e0;
+}
+
+.text-right h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.text-right form input[type="text"],
+.text-right form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #a34f4f;
+    border-radius: 5px;
+}
+
+.text-right form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #de7a7a;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.text-right form button:hover {
+    background-color: #0056b3;
+}
+
+.text-right form .errorlist {
+    color: #f00;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}

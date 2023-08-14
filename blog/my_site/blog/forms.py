@@ -1,5 +1,5 @@
 from django import forms
-from .models import Account , Comment
+from .models import *
 
 class AccountForm(forms.Form):
     GENDER = (
@@ -53,4 +53,9 @@ class UserLoginForm(forms.Form):
     def clean_pass(self):
         if password is None:
             raise forms.ValidationError('کادر رمز عبور خالی است')
-        
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'slug', 'body', 'status', 'publish']

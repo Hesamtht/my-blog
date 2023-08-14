@@ -2,11 +2,12 @@
 {% load static %}
 
 {% block head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'account_form.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/account_form.css' %}">
 {% endblock %}
 
 {% block content %}
-    <h1 style="..."> فرم اطلاعات شخصی {{ account.user.first_name }}</h1>
+
+    <h1>فرم اطلاعات شخصی</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -28,4 +29,5 @@
             {% endif %}
         </ul>
     {% endif %}
+
 {% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'blog/parent/base.html' %}
+
+{% block title %}
+    حذف پست
+{% endblock %}
+
+{% block content %}
+    <h1>آیا می‌خواهید این پست را حذف کنید؟</h1>
+    <h2>{{ post.title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">حذف</button>
+        <a href="{% url 'blog:post_list' %}">انصراف</a>
+    </form>
+{% endblock %}

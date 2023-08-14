@@ -1,10 +1,11 @@
 from django.shortcuts import render , get_object_or_404 , redirect
 from .models import *
-from django.http import HttpResponse
+from django.http import HttpResponse , HttpResponseRedirect
 from .forms import *
 from django.contrib.auth import login , authenticate , logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.models import User
 # Create your views here.
 def welcome(request):
     return render(request , 'blog/post/welcome.html')
@@ -118,5 +119,25 @@ def search(request):
 
     return render(request , 'blog/post/search_field.html' , {'results': None , 'query' : None})
 
-def user_profile(request):
-    pass
+
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit = False)
+            post.author = request.user  # Set the current user as the author
+            post.save()
+            return redirect('blog:post_list')  # Redirect to the post list page
+    else:
+        form = PostForm()
+    return render(request , 'blog/forms/create_post.html' , {'form': form})
+
+
+def delete_post(request , slug):
+    post = get_object_or_404(Post , slug = slug)
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('blog:post_list')
+
+    return render(request , 'blog/post/delete_post.html' , {'post': post})
