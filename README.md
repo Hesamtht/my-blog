@@ -1,5 +1,11 @@
 # my-blog
-Simple blog site with class comment , Register , Login , Logout
+This is my blog website using Django platform with these following features :
+
+1: Registration , login , logout
+2: Seaching
+3: Deleting option
+4: Creating posts for all users
+5: commenting for specific posts
 
 To start project:
 
