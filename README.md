@@ -1,40 +1,31 @@
-# my-blog
-This is my blog website using Django platform with these following features :
+# Django Blog Website
 
-1: Registration , login , logout
-2: Seaching
-3: Deleting option
-4: Creating posts for all users
-5: commenting for specific posts
+A Weblog platform built with Django.
 
-To start project:
+## Features
+- User Registration, Login, and Logout
+- Search Functionality
+- Post Deletion Options
+- Post Creation for All Users
+- Commenting on Specific Posts
 
+## Getting Started
 
-WINDOWS:
-
+### Windows
+```
 pip install virtualenv
-
 python -m venv myenv
-
 cd myenv/scripts
-
-type 'activate'
-
+activate
 cd my_site
-
 python manage.py runserver
+```
 
-
-
-MAC:
-
-$ pip3 install virtualenv
-
-$ virtualenv venv
-
-$ source venv/bin/activate
-
+### Mac
+```
+pip3 install virtualenv
+virtualenv venv
+source venv/bin/activate
 cd my_site
-
 python manage.py runserver
-
+```
